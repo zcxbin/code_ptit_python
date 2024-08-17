@@ -10,16 +10,16 @@ for i in idxCuTri:
 maxVote = secondVote = -1
 
 for votes in phieuBau:
-    if(votes > maxVote):
+    if votes > maxVote:
         secondVote = maxVote
         maxVote = votes
-    elif votes > secondVote and votes < maxVote:
+    elif secondVote < votes < maxVote:
         secondVote = votes
 
-if(secondVote == 0):
+if secondVote == 0:
     print("NONE")
 else:
     for i in range(1, n):
-        if(phieuBau[i] == secondVote):
+        if phieuBau[i] == secondVote:
             print(i)
             break
