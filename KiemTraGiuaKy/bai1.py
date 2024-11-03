@@ -1,25 +1,15 @@
-def largest_smaller_number(s):
-    digits = list(s)
-    n = len(digits)
+from itertools import permutations
 
-    for i in range(n - 1, 0, -1):
-        if digits[i] < digits[i - 1]:
-            break
-    else:
-        return -1
+t = int(input())
 
-    for j in range(n - 1, i - 1, -1):
-        if digits[j] < digits[i - 1]:
-            digits[i - 1], digits[j] = digits[j], digits[i - 1]
-            break
+for _ in range(t):
+    n = int(input())
+    arr = [str(i) for i in range(1, n + 1)]
 
-    digits[i:] = sorted(digits[i:], reverse=True)
-    result = ''.join(digits)
-    return result if result[0] != '0' else -1
+    perm = sorted(permutations(arr), reverse=True)
+    print(len(perm))
 
+    for i in perm:
+        print(''.join(i), end=' ')
 
-T = int(input())
-for _ in range(T):
-    N = input()
-    result = largest_smaller_number(N)
-    print(result)
+    print()
